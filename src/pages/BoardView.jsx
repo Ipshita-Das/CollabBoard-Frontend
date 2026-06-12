@@ -95,11 +95,24 @@ const BoardView = () => {
     <div className="kanban-layout">
       <div className="kanban-nav" style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 20px', alignItems: 'center', borderBottom: '1px solid #e2e8f0' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          
+          {/* BACK TO DASHBOARD BUTTON */}
+          <button 
+            onClick={() => navigate('/')} 
+            className="secondary-button"
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: '#e2e8f0', color: '#0f172a', border: 'none' }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+            Dashboard
+          </button>
+
           <h2>{board?.title}</h2>
           
           <button onClick={() => setIsDashboardOpen(true)} className="secondary-button">Analytics</button>
           
-          {/* FIXED: Restored Epic Generator button for Admins */}
+          {/* Restored Epic Generator button for Admins */}
           {userRole === 'admin' && (
             <button 
               onClick={() => setIsAiModalOpen(true)} 
@@ -174,7 +187,7 @@ const BoardView = () => {
       <AnalyticsDashboard isOpen={isDashboardOpen} onClose={() => setIsDashboardOpen(false)} lists={lists} tasks={tasks} setTasks={setTasks} />
       <ProblemModal isOpen={isProblemModalOpen} onClose={() => setIsProblemModalOpen(false)} role={userRole} />
       
-      {/* FIXED: Restored Epic Generator Component */}
+      {/* Restored Epic Generator Component */}
       <EpicGeneratorModal 
         isOpen={isAiModalOpen} 
         onClose={() => setIsAiModalOpen(false)}
